@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Hugo Prose</title>
+    <link>/</link>
+    <description>Recent content in Home on Hugo Prose</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Dec 2020 21:13:14 -0500</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Philosophy</title>
+      <link>/card/philosophy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/card/philosophy/</guid>
+      <description>As &amp;ldquo;a major philosophical figure of the Roman Imperial Period&amp;rdquo;, Seneca’s lasting contribution to philosophy has been to the school of Stoicism. His writing is highly accessible and was the subject of attention from the Renaissance onwards by writers such as Michel de Montaigne. He has been described as “a towering and controversial figure of antiquity” and “the world’s most interesting Stoic”.
+Seneca wrote a number of books on Stoicism, mostly on ethics, with one work (Naturales Quaestiones) on the physical world.</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>/card/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/card/projects/</guid>
+      <description>Ten plays are attributed to Seneca, of which most likely eight were written by him. The plays stand in stark contrast to his philosophical works. With their intense emotions, and grim overall tone, the plays seem to represent the antithesis of Seneca&amp;rsquo;s Stoic beliefs. Up to the 16th century it was normal to distinguish between Seneca the moral philosopher and Seneca the dramatist as two separate people. Scholars have tried to spot certain Stoic themes: it is the uncontrolled passions that generate madness, ruination, and self-destruction.</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>/card/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/card/publications/</guid>
+      <description>Works attributed to Seneca include a dozen philosophical essays, one hundred and twenty-four letters dealing with moral issues, nine tragedies, and a satire, the attribution of which is disputed. His authorship of Hercules on Oeta has also been questioned.
+De Providentia (On providence) - addressed to Lucilius De Constantia Sapientis (On the Firmness of the Wise Person) - addressed to Serenus De Ira (On anger) – A study on the consequences and the control of anger - addressed to his brother Novatus Ad Marciam, De consolatione (To Marcia, On Consolation) – Consoles her on the death of her son De Vita Beata (On the Happy Life) - addressed to Gallio </description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/post/2020/12/01/hello-r-markdown/</link>
+      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2020/12/01/hello-r-markdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+    </item>
+    
+    <item>
+      <title>R Markdown Demo</title>
+      <link>/post/2020/11/10/r-markdown-demo/</link>
+      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/11/10/r-markdown-demo/</guid>
+      <description>Floats Full-width figures Use a fenced Div with the class fullwidth, e.g.,
+::: {.fullwidth} Any Markdown content or code blocks here. ```{r, echo=FALSE, fig.dim=c(14, 4)} plot(sunspots) ``` ::: Figure 1: Monthly mean relative sunspot numbers from 1749 to 1983. Collected at Swiss Federal Observatory, Zurich until 1960, then Tokyo Astronomical Observatory. If you add the class fullscroll to the Div, the figure will be scrollable, e.g.,
+::: {.fullwidth .fullscroll} ::: Figure 2: This is a super wide figure that you need to scroll to view it fully.</description>
+    </item>
+    
+    <item>
+      <title>Letter 4: On The Terrors of Death</title>
+      <link>/post/2019/07/30/letter-4-on-the-terrors-of-death/</link>
+      <pubDate>Tue, 30 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019/07/30/letter-4-on-the-terrors-of-death/</guid>
+      <description>Keep on as you have begun, and make all possible haste, so that you may have longer enjoyment of an improved mind, one that is at peace with itself.
+Doubtless you will derive enjoyment during the time when you are improving your mind and setting it at peace with itself; but quite different is the pleasure which comes from contemplation when one’s mind is so cleansed from every stain that it shines.</description>
+    </item>
+    
+    <item>
+      <title>Seneca&#39;s essays</title>
+      <link>/work/essays/</link>
+      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/work/essays/</guid>
+      <description>Traditionally given in the following order:
+De Providentia (On providence) - addressed to Lucilius De Constantia Sapientis (On the Firmness of the Wise Person) - addressed to Serenus De Ira (On anger) – A study on the consequences and the control of anger - addressed to his brother Novatus Ad Marciam, De consolatione (To Marcia, On Consolation) – Consoles her on the death of her son De Vita Beata (On the Happy Life) - addressed to Gallio &amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Seneca&#39;s tragedies</title>
+      <link>/work/tragedies/</link>
+      <pubDate>Tue, 13 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/work/tragedies/</guid>
+      <description>Fabulae crepidatae (tragedies with Greek subjects):
+Hercules or Hercules furens (The Madness of Hercules) Troades (The Trojan Women) Phoenissae (The Phoenician Women) Medea Phaedra Oedipus Agamemnon Thyestes Hercules Oetaeus (Hercules on Oeta): generally considered not written by Seneca. First rejected by Heinsius. Fabula praetexta (tragedy in Roman setting):
+Octavia: almost certainly not written by Seneca (at least in its final form) since it contains accurate prophecies of both his and Nero’s deaths.</description>
+    </item>
+    
+    <item>
+      <title>Letter 2: On Discursiveness in Reading</title>
+      <link>/post/2016/02/14/letter-2-on-discursiveness-in-reading/</link>
+      <pubDate>Sun, 14 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016/02/14/letter-2-on-discursiveness-in-reading/</guid>
+      <description>Judging by what you write me, and by what I hear, I am forming a good opinion regarding your future.
+You do not run hither and thither and distract yourself by changing your abode; for such restlessness is the sign of a disordered spirit.
+The primary indication, to my thinking, of a well-ordered mind is a man’s ability to remain in one place and linger in his own company.
+Be careful, however, lest this reading of many authors and books of every sort may tend to make you discursive and unsteady.</description>
+    </item>
+    
+    <item>
+      <title>Letter 1: On Saving Time</title>
+      <link>/post/2015/07/23/letter-1-on-saving-time/</link>
+      <pubDate>Thu, 23 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/07/23/letter-1-on-saving-time/</guid>
+      <description>Greetings from Seneca to his friend Lucilius.
+Continue to act thus, my dear Lucilius – set yourself free for your own sake; gather and save your time, which till lately has been forced from you, or filched away, or has merely slipped from your hands.
+Make yourself believe the truth of my words, that certain moments are torn from us, that some are gently removed, and that others glide beyond our reach.</description>
+    </item>
+    
+    <item>
+      <title>About Hugo Prose</title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Hugo Prose is a minimalist theme derived from the XMin theme, and inspired by Wowchemy (previously known as the Academic theme), Distill, and tufte.css. This theme itself is completely plain-text and lightweight, and does not use any icons, images, or emojis.1 By default, the theme only uses two JavaScript libraries, MathJax and highlight.js, and they are loaded only when necessary. The rest of JavaScript is written from scratch and also relatively short.</description>
+    </item>
+    
+    <item>
+      <title>Sitemap</title>
+      <link>/sitemap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/sitemap/</guid>
+      <description>Below is a full list of posts and pages on this website ordered by date.</description>
+    </item>
+    
+  </channel>
+</rss>
