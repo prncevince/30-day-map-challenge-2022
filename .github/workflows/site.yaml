@@ -27,6 +27,8 @@ jobs:
       RENV_CONFIG_REPOS_OVERRIDE: ${{ matrix.r-repo }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - uses: r-lib/actions/setup-pandoc@v2
       - name: Install system dependencies on Linux
         if: runner.os == 'Linux'
@@ -35,7 +37,7 @@ jobs:
           sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev libgdal-dev libproj-dev libgeos-dev libudunits2-dev netcdf-bin libglpk-dev libxml2-dev libgmp3-dev pngquant
       - uses: prncevince/r-actions/setup-renv@v1.4.0
         with:
-          type: 'restore'
+          type: restore
       - name: Install Hugo
         run: make install-hugo
       - name: Setup & Build Site
