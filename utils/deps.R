@@ -4,8 +4,9 @@ library(ggplot2)
 library(plotly)
 library(sf)
 library(tictoc)
-# R Markdown
+# Documentation web medium - R Markdown
 library(rmarkdown)
+library(servr)
 # R CLI nvim coc / ALE setup
 library(languageserver)
 library(styler)
