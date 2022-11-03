@@ -8,6 +8,7 @@ library(tictoc)
 library(blogdown)
 library(rmarkdown)
 library(servr)
+library(svglite)
 # R CLI nvim coc / ALE setup
 library(languageserver)
 library(styler)

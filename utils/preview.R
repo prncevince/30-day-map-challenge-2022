@@ -1,1 +1,0 @@
-servr::httw('docs')

@@ -1,0 +1,1 @@
+options()[grep("^blogdown\\..*$", names(options()), value = T)]
