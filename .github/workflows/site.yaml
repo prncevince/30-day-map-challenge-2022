@@ -47,5 +47,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
-          folder: public
+          folder: public/30-day-map-challenge-2022
           target-folder: .
