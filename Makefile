@@ -1,8 +1,11 @@
-.PHONY: build install-hugo serve serve-dev
+.PHONY: build clean install-hugo serve serve-dev
 
 # by default, .Rmd does not get rendered - previously generated md/html from .Rmd is used instead
-build:
+build: clean
 	Rscript utils/build.R
+
+clean:
+	rm -rf public
 
 install-hugo:
 	Rscript utils/install-hugo.R
