@@ -5,6 +5,7 @@ library(plotly)
 library(sf)
 library(tictoc)
 # Documentation web medium - R Markdown
+library(blogdown)
 library(rmarkdown)
 library(servr)
 # R CLI nvim coc / ALE setup
