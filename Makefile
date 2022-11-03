@@ -5,7 +5,7 @@ build:
 	Rscript utils/build.R
 
 install-hugo:
-	Rsript utils/install-hugo.R
+	Rscript utils/install-hugo.R
 
 # serves html output from built hugo site directory (e.g. public/)
 # refreshes on new content
