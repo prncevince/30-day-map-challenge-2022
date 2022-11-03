@@ -1,0 +1,49 @@
+# Workflow derived from https://github.com/prncevince/r-actions/
+
+name: rmd-site
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['**.md']
+  pull_request:
+    branches: [main]
+    paths-ignore: ['**.md']
+  workflow_dispatch:
+jobs:
+  rmd-site:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04]
+        r: ['release']
+        r-repo: ['https://packagemanager.rstudio.com/all/__linux__/focal/latest']
+    # Only runs PR jobs concurrently & uses same group as other ghpages jobs
+    # PR jobs run in their own branch & do not deploy anything - so we assume they can run concurrently
+    concurrency:
+      group: ghpages-${{ github.event_name != 'pull_request' || github.run_id }}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_CONFIG_REPOS_OVERRIDE: ${{ matrix.r-repo }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: r-lib/actions/setup-pandoc@v2
+      - name: Install system dependencies on Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev libgdal-dev libproj-dev libgeos-dev libudunits2-dev netcdf-bin libglpk-dev libxml2-dev libgmp3-dev pngquant
+      - uses: prncevince/r-actions/setup-renv@v1.4.0
+        with:
+          type: 'restore'
+      - name: Install Hugo
+        run: make install-hugo
+      - name: Setup & Build Site
+        run: make build
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: public
+          target-folder: .

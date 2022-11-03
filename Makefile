@@ -1,8 +1,11 @@
-.PHONY: build serve serve-dev
+.PHONY: build install-hugo serve serve-dev
 
 # by default, .Rmd does not get rendered - previously generated md/html from .Rmd is used instead
 build:
 	Rscript utils/build.R
+
+install-hugo:
+ Rsript utils/install-hugo.R
 
 # serves html output from built hugo site directory (e.g. public/)
 # refreshes on new content
