@@ -215,6 +215,7 @@
   }
 
   // search
+  base = '/30-day-map-challenge-2022'
   a = d.querySelector('li#menu-search > a');
   if (a) {
     var t = a.innerText, fuse;
@@ -271,7 +272,7 @@
             sec2 = sec.cloneNode();
             h = d.createElement('h1');
             u = d.createElement('a');
-            u.href = res.item.uri;
+            u.href = base + res.item.uri;
             u.target = '_blank';
             u.innerText = res.item.title;
             h.appendChild(u);
@@ -301,7 +302,7 @@
               threshold: 0.1
             });
           }, false);
-          request.open('GET', '/30-day-map-challenge-2022/index.json');
+          request.open('GET', base + '/index.json');
           // if Fuse has not been loaded, load the latest version from CDN
           if (!window.Fuse) {
             var script = d.createElement('script');
