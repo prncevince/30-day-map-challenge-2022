@@ -9,6 +9,12 @@ options(
   blogdown.knit.on_save = TRUE,
   # build .Rmd to .html (via Pandoc); to build to Markdown, set this option to 'markdown'
   blogdown.method = 'html',
+  # this is necessary for running `blogdown::serve_site()` e.g. `make serve-dev` b/c 
+  # blogdown::serve_site() is messed up - doesn't seem to work correctly
+  # you need to navigate to localhost:xxxx manually
+  # hugo server -D -F --navigateToChanged
+  blogdown.hugo.server = c('-D', '-F', '--navigateToChanged', '--baseURL ', 'http://127.0.0.1'),
+  # blogdown.hugo.server = c('-D', '-F', '--navigateToChanged', '--baseURL ', '127.0.0.1/30-day-map-challenge-2022'),
   # Suppress warnings when !expr values are in R Markdown yaml header
   yaml.eval.expr = TRUE
 )
