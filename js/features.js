@@ -214,7 +214,12 @@
     }
   }
 
-  // search
+  /* search 
+  To make this work in all environments, due to the GET request on /index.json,
+  we need HuGo logic to determine how the site is being served.
+  Paths in /index.json are created in layouts/_defaultindex.json.json. 
+  */
+  // base = ''
   base = '/30-day-map-challenge-2022'
   a = d.querySelector('li#menu-search > a');
   if (a) {
