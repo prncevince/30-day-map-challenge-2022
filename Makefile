@@ -4,6 +4,9 @@
 build: clean
 	Rscript utils/build.R
 
+build-future: clean
+	Rscript utils/build.R --args "-DF"
+
 clean:
 	rm -rf public
 

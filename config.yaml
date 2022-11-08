@@ -1,6 +1,7 @@
 baseurl: "https://prncevince.github.io/30-day-map-challenge-2022"
 publishDir: "public/30-day-map-challenge-2022"
 relativeURLs: true
+canonifyURLs: true
 languageCode: "en-us"
 defaultContentLanguage: "en"
 # defaultContentLanguage: "zh"
@@ -25,7 +26,7 @@ menu:
       url: "#"
       identifier: menu-search
     - name: Subscribe
-      url: "index.xml"
+      url: "/index.xml"
   footer:
     - name: Contact
       url: "/404.html"
