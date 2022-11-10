@@ -1,7 +1,9 @@
-if (system("uname", intern = T) == "Linux") {
-  # when working on Linux & not using GitHub Actions (e.g. RStudio Cloud)
-  if (is.na(Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE", unset = NA))) {
-    Sys.setenv(RENV_CONFIG_REPOS_OVERRIDE="https://packagemanager.rstudio.com/all/__linux__/focal/latest")
+if (!.Platform$OS.type == "windows") {
+  if (system("uname", intern = T) == "Linux") {
+    # when working on Linux & not using GitHub Actions (e.g. RStudio Cloud)
+    if (is.na(Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE", unset = NA))) {
+      Sys.setenv(RENV_CONFIG_REPOS_OVERRIDE="https://packagemanager.rstudio.com/all/__linux__/focal/latest")
+    }
   }
 }
 source("renv/activate.R")
