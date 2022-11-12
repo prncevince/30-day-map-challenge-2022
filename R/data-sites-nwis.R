@@ -13,7 +13,7 @@ toc()
 
 # cannot query multiple states at the same time
 # does not pass dataRetrieval:::readNWISdots
-# d_site_all_states <- whatNWISsites(
+# d_nwis_all_states <- whatNWISsites(
 #   stateCd = stateCd
 # )
 
@@ -22,31 +22,30 @@ toc()
 # d_site_yt <- whatNWISsites(stateCd="YT")
 # toc()
 
-
 tic(msg = "All 'States'")
 stateCd <- sort(unique(dataRetrieval::stateCd$STUSAB))
-d_site_all_states <- data.table()
+d_nwis_all_states <- data.table()
 for (s in stateCd) {
   tic(msg = s)
-  d_site_all_states <- rbind(
-    d_site_all_states,
+  d_nwis_all_states <- rbind(
+    d_nwis_all_states,
     cbind(whatNWISsites(stateCd = s), stateCd = s)
   )
   toc()
 }
 toc()
 
-# summaries 
-# counts by state
-d_site_all_states[, .N, by = stateCd][order(N, decreasing = T)]
-# counts by categories ----
-## site_tp_cd ----
-d_site_all_states[, .N, by = site_tp_cd][order(N, decreasing = T)]
-## agency_cd ----
-d_site_all_states[, .N, by = agency_cd][order(N, decreasing = T)]
-## colocated ----
-d_site_all_states[, .N, by = colocated]
-## duplicate sites ----
-d_site_all_states[duplicated(site_no),]
-## unique station names ----
-d_site_all_states[, length(unique(station_nm))]
+# summaries ----
+## counts by state ----
+d_nwis_all_states[, .N, by = stateCd][order(N, decreasing = T)]
+## counts by categories ----
+### site_tp_cd ----
+d_nwis_all_states[, .N, by = site_tp_cd][order(N, decreasing = T)]
+### agency_cd ----
+d_nwis_all_states[, .N, by = agency_cd][order(N, decreasing = T)]
+### colocated ----
+d_nwis_all_states[, .N, by = colocated]
+### duplicate sites ----
+d_nwis_all_states[duplicated(site_no),]
+### unique station names ----
+d_nwis_all_states[, length(unique(station_nm))]
