@@ -28,37 +28,106 @@ d_wqp_wi[,
 ]
 d_wqp_wi[, sort(unique(OrganizationIdentifier))]
 
-# by `countrycode`
+# domains values ----
+## by `countrycode` ----
+### FIPS ----
 d_cc <- data.table(countrycode::codelist)
+cc_fips <- sort(unique(d_cc$fips))
+cc_fips_no_us <- cc_fips[! cc_fips == "US"]
+### WQP ----
+d_wqp_domain_cc <- fread("data/maps/All_Domains_CSV/Country.csv")
+cc_wqp <- sort(unique(d_wqp_domain_cc$Code))
+cc_wqp_no_us <- cc_wqp[! cc_wqp == "US"]
 
-
-
-# Puerto Rico
+# data pull ----
+## Global Grid ----
+# ~8.25 minutes & ~2.7 million sites
 tic()
-d_wqp_rq <- data.table(
-  whatWQPsites(countrycode = "RQ")
+d_wqp_cc_na <- data.table(
+  whatWQPsites(countrycode = "")
+)
+toc()
+## WQP - Everything outside of the 'US' ----
+### All ----
+# does not work
+tic()
+d_wqp_cc <- data.table(
+  whatWQPsites(countrycode = cc_wqp_no_us)
+)
+toc()
+### everything NOT in FIPS ----
+#### does not work ----
+tic()
+d_wqp_cc <- data.table(
+  whatWQPsites(countrycode = cc_wqp_no_us[!cc_wqp_no_us %in% cc_fips_no_us])
+)
+toc()
+#### 0A, 0I, 0P, 0R, 0S, 3G, 5C, 5M, & P All fail ----
+cc_wqp_no_fips <- cc_wqp_no_us[!cc_wqp_no_us %in% cc_fips_no_us]
+d_wqp_cc <- data.table()
+tic(msg = "All Non FIPS")
+for (c in cc_wqp_no_fips) {
+  tic(msg = paste0(c, ": ", d_wqp_domain_cc[Code == c, Name]))
+  tryCatch(
+    d_wqp_cc <- rbind(
+      d_wqp_cc,
+      whatWQPsites(countrycode = c)
+    ),
+    error = function(e) e
+  )
+  toc()
+}
+toc()
+##### without FIPS, numbers (Seas), P, & US ----
+# works, returns 35 results
+cc_wqp_no_fips_sea_p_us <- cc_wqp_no_fips[! cc_wqp_no_fips %in% c("P", "US", "0A", "0I", "0P", "0R", "0S", "3G", "5C", "5M")]
+tic()
+d_wqp_cc <- data.table(
+  whatWQPsites(countrycode = cc_wqp_no_fips_sea_p_us)
+)
+toc()
+# table(d_wqp_cc$CountryCode)
+# AT CZ DE DK EE IE IL LV RU TR YT 
+# 2  1  2  8 12  5  1  1  1  1  1 
+### everything without numbers ----
+tic()
+d_wqp_cc <- data.table(
+  whatWQPsites(countrycode = cc_wqp_no_us[!cc_wqp_no_us %in% cc_fips_no_us][-c(1:8)])
+)
+toc()
+### everything with numbers ----
+tic()
+d_wqp_cc <- data.table(
+  whatWQPsites(countrycode = cc_wqp_no_us[!cc_wqp_no_us %in% cc_fips_no_us][1:8])
+)
+toc()
+### everything without P & US ... ----
+cc_wqp_no_p_us <- cc_wqp[! cc_wqp %in% c("P", "US")]
+tic()
+d_wqp_cc <- data.table(
+  whatWQPsites(countrycode = cc_wqp_no_p_us)
 )
 toc()
 
-# Everything outside of the 'US'
+
+## FIPS - Everything outside of the 'US' ----
 # ~1 second & 35 countries
-cc_fips <- sort(unique(d_cc$fips))
-cc_fips_no_us <- cc_fips[! cc_fips == "US"]
+
 tic()
-d_wqp_cc <- data.table(
+d_wqp_fips_cc <- data.table(
   whatWQPsites(countrycode = cc_fips_no_us)
 )
 toc()
 
 merge.data.table(
   by.x = c("fips"), by.y = c("CountryCode"),
-  x = d_cc[fips %in% d_wqp_cc[,unique(CountryCode)], .(country.name.en, fips)],
-  y = d_wqp_cc[, .N, by = CountryCode]
+  x = d_cc[fips %in% d_wqp_fips_cc[,unique(CountryCode)], .(country.name.en, fips)],
+  y = d_wqp_fips_cc[, .N, by = CountryCode]
 )[order(N, decreasing = T)]
-d_wqp_cc[, .N, by = CountryCode][order(N, decreasing = T)]
-d_cc[fips %in% d_wqp_cc[,unique(CountryCode)], .(country.name.en, fips)]
+d_wqp_fips_cc[, .N, by = CountryCode][order(N, decreasing = T)]
+d_cc[fips %in% d_wqp_fips_cc[,unique(CountryCode)], .(country.name.en, fips)]
 
-# All of the 'US'
+## All of the 'US' ----
 # ~7.5 minutes & ~2.7 million sites
 tic()
 d_wqp_cc_us <- data.table(
@@ -66,10 +135,10 @@ d_wqp_cc_us <- data.table(
 )
 toc()
 
-# No CountryCode data ...
-# ~7.5 minutes & ~2.7 million sites
+## No CountryCode data ... ----
+# no results
 tic()
-d_wqp_cc_us <- data.table(
+d_wqp_cc_na <- data.table(
   whatWQPsites(countrycode = NA)
 )
 toc()
@@ -80,8 +149,8 @@ d_wqp_cc_us[, length(unique(MonitoringLocationIdentifier))]
 dim(d_wqp_cc_us)
 ## `OrganizationIdentifier` & unique partial `MonitoringLocationIdentifier` ----
 ### countries ----
-cc_OrganizationIdentifier <- d_wqp_cc[, sort(unique(OrganizationIdentifier))]
-cc_MonitoringLocationIdentifier_part <- d_wqp_cc[,
+cc_OrganizationIdentifier <- d_wqp_fips_cc[, sort(unique(OrganizationIdentifier))]
+cc_MonitoringLocationIdentifier_part <- d_wqp_fips_cc[,
   MonitoringLocationIdentifier |> strsplit(split = "-") |> lapply(`[`, 1) |> 
     unlist() |> unique() |> sort()
 ]
@@ -112,7 +181,7 @@ us_MonitoringLocationIdentifier_part[!us_MonitoringLocationIdentifier_part %in% 
 #  [91] "USIBW" "USN"   "USNOA" "USNOS"      "USNPS" "USNWS" "USSCS" "VA087" "VT004"  "VT012" 
 # [101] "WA013" "WI009" "WV001" "WV002" 
 # counts by partials of `MonitoringLocationIdentifier`
-d_wqp_cc[,
+d_wqp_fips_cc[,
   MonitoringLocationIdentifier |> strsplit(split = "-") |> lapply(length) |> 
     unlist() |> table()
 ]
@@ -125,7 +194,7 @@ d_wqp_cc_us[,
 #       2       3       4       5       6       7 
 # 2414303  197324   46348   37492    2526      17 
 # counts by `ProviderName`
-d_wqp_cc[, .N, by = ProviderName][order(N, decreasing = T)]
+d_wqp_fips_cc[, .N, by = ProviderName][order(N, decreasing = T)]
 d_wqp_cc_us[, .N, by = ProviderName][order(N, decreasing = T)]
 
 

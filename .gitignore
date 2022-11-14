@@ -21,6 +21,7 @@ CONTRIBUTING.html
 /notes
 # For the data
 /data/maps/*
+/data/lake/*
 # Vim
 *.swp
 # OS
