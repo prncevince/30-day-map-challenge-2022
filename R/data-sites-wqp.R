@@ -112,7 +112,6 @@ toc()
 
 ## FIPS - Everything outside of the 'US' ----
 # ~1 second & 35 countries
-
 tic()
 d_wqp_fips_cc <- data.table(
   whatWQPsites(countrycode = cc_fips_no_us)
