@@ -42,6 +42,7 @@ cc_wqp_no_us <- cc_wqp[! cc_wqp == "US"]
 # data pull ----
 ## Global Grid ----
 # ~8.25 minutes & ~2.7 million sites
+# setting countrycode to -> "" <- gives everything 
 tic()
 d_wqp_cc_na <- data.table(
   whatWQPsites(countrycode = "")
